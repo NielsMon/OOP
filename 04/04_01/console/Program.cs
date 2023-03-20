@@ -1,0 +1,59 @@
+﻿using System;
+using models;
+
+namespace console
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            // declaratie variabelen
+            Punt punt;
+            Cirkel cirkel;
+            Cilinder cilinder;
+
+            double x, y, r, h;
+            string output = "";
+            
+            // maak keuze
+            Console.WriteLine("0. Punt\n" +
+                "1. Cirkel\n" +
+                "2. Cilinder");
+            int keuze = int.Parse(Console.ReadLine());
+
+            switch (keuze)
+            {
+                case 0:
+                    punt = new Punt(GeefWaarde(), GeefWaarde());
+                    output = punt.ToonGegevens();
+                    break;
+                case 1:
+                    cirkel = new Cirkel(GeefWaarde(), GeefWaarde(), GeefWaarde());
+                    output = cirkel.ToonGegevens();
+                    break;
+                case 2:
+                    cilinder = new Cilinder(GeefWaarde(), GeefWaarde(), GeefWaarde(), GeefWaarde());
+                    output = cilinder.ToonGegevens();
+                    break;
+            }
+            Console.WriteLine(output);
+        }
+        private static double GeefWaarde()
+        {
+            string input = "";
+            double waarde = 0;
+            bool succes = false;
+            do
+            {
+                Console.Write("Geef een waarde: ");
+                input = Console.ReadLine();
+                succes = double.TryParse(input, out waarde);
+                if (waarde <= 0)
+                {
+                    succes = false;
+                }
+            } while (!succes);
+            return waarde;
+        }
+    }
+}
