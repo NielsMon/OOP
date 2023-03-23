@@ -16,7 +16,7 @@ namespace models
         public string IbanNummer
         {
             get { return _ibanNummer; }
-            set { _ibanNummer = LandCode +  value; }
+            set { _ibanNummer = LandCode + value; }
         }
         public string LandCode
         {
@@ -31,7 +31,7 @@ namespace models
         public double Saldo
         {
             get { return _saldo; }
-            set 
+            set
             {
                 if (value < Minimum)
                 {
@@ -50,8 +50,8 @@ namespace models
             this.IbanNummer = ibanNummer;
             this.Saldo = saldo;
         }
-        public Bankrekening() {}
-        
+        public Bankrekening() { }
+
         // methodes
         public void Afhalen(double bedrag)
         {
@@ -64,6 +64,10 @@ namespace models
         public virtual string ToonGegevens()
         {
             return $"Rekening {IbanNummer} met saldo {Saldo}";
+        }
+        public override string ToString()
+        {
+            return $"{IbanNummer} -> Je huidig saldo bedraagt: {Saldo} euro.";
         }
     }
 }

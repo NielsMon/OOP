@@ -13,18 +13,19 @@ namespace models
             get { return _h; }
             set { _h = value; }
         }
+        public override string Omschrijving
+        {
+            get { return base.Omschrijving + $", hoogte = {H}"; }
+        }
 
         // constructors
-        public Cilinder(double x, double y, double r, double h) : base(x, y, r) { this.H = h; }
+        public Cilinder(double x, double y, double r, double h) : base(x, y, r) 
+        { 
+            this.H = h; 
+        }
         public Cilinder() { }
 
         // methoden
-        public new string Omschrijving()
-        {
-            return $"{this.GetType().Name}: coord=({X},{Y}) straal {R}, hoogte = {H}\n" +
-                $"Oppervlakte: " + Oppervlakte() +
-                $"\nVolume: " + Volume();
-        }
         public new double Oppervlakte()
         {
             return Math.Round(2 * Math.PI * Math.Pow(R, 2) + 2 * Math.PI * R * H,2);
@@ -35,7 +36,9 @@ namespace models
         }
         public new string ToonGegevens()
         {
-            return Omschrijving();
+            return Omschrijving +
+                $"\nOppervlakte: " + Oppervlakte() +
+                $"\nVolume: " + Volume();
         }
     }
 }

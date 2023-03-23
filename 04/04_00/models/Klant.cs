@@ -9,23 +9,23 @@ namespace models
     {
 
         // Attribuut
-        private string _klantcode;
+        private string _klantencode;
 
         //Property
-        private string Klantcode
+        private string Klantencode
         {
-            get { return _klantcode; }
-            set { _klantcode = value; }
+            get { return _klantencode; }
+            set { _klantencode = value; }
         }
 
         // Constructor
         public Klant(string voornaam, string achternaam) : base(voornaam, achternaam)
         {
-            MaakRandomKlantCode();
+            MaakRandomKlantenCode();
         }
 
         //Methode
-        private void MaakRandomKlantCode()
+        private void MaakRandomKlantenCode()
         {
             string toegelatenKarakters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
             char[] klantencode = new char[16];
@@ -36,13 +36,13 @@ namespace models
             {
                 klantencode[i] = toegelatenKarakters[random.Next(toegelatenKarakters.Length)];
             }
-            Klantcode = new string(klantencode);
+            Klantencode = new string(klantencode);
         }
 
         // Methode
         public override string ToonGegevens()
         {
-            return base.ToonGegevens() + $" mijn klantencode: {Klantcode}";
+            return base.ToonGegevens() + $" mijn klanten code: {Klantencode}.";
         }
     }
 }

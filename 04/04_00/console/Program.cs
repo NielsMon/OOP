@@ -18,7 +18,7 @@ namespace console
             werknemer = new Werknemer(voornaam, achternaam);
             Console.Clear();
             Console.WriteLine(werknemer.ToonGegevens());
-
+            Console.WriteLine();
             // Klant aanmaken
 
             voornaam = LeesStringNietLeeg("Beste klant, geef je voornaam: ");

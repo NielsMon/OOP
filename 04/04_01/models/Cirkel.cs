@@ -13,9 +13,16 @@ namespace models
             get { return _r; }
             set { _r = value; }
         }
+        public override string Omschrijving
+        {
+            get { return base.Omschrijving + $" straal {R}"; }
+        }
 
         // constructors
-        public Cirkel(double x, double y, double r): base(x,y) { this.R = r; }
+        public Cirkel(double x, double y, double r): base(x,y) 
+        {
+            this.R = r;
+        }
         public Cirkel() { }
 
         // methoden
@@ -23,15 +30,11 @@ namespace models
         {
             return Math.Round(2 * Math.PI * R, 2);
         }
-        public override string Omschrijving()
+        public override string ToonGegevens()
         {
-            return base.Omschrijving() + $" straal {R}\n" +
-                $"Oppervlakte: " + Oppervlakte()+
+            return Omschrijving +
+                $"\nOppervlakte: " + Oppervlakte() +
                 $"\nOmtrek: " + Omtrek();
-        }
-        public virtual string ToonGegevens()
-        {
-            return Omschrijving();
         }
         public virtual double Oppervlakte()
         {
